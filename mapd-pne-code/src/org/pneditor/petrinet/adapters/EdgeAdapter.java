@@ -7,12 +7,30 @@ import org.pneditor.petrinet.models.Edge;
 import org.pneditor.petrinet.models.EdgeEmpty;
 import org.pneditor.petrinet.models.EdgeIn;
 import org.pneditor.petrinet.models.EdgeOut;
+import org.pneditor.petrinet.models.EdgeType;
 import org.pneditor.petrinet.models.EdgeZero;
 import org.pneditor.petrinet.models.Transition;
 
 public class EdgeAdapter extends AbstractArc {
 	private Edge edge;
 	private Transition transition;
+	
+	public EdgeAdapter(AbstractNode entry,AbstractNode exit,EdgeType edgeType) {
+		switch (edgeType) {
+		case EMPTY:
+			this.transition = entry.getModel();
+			break;
+		case IN:
+			break;
+		case OUT:
+			break;
+		case ZERO:
+			break;
+		default:
+			break;
+			
+		}
+	}
 
 	@Override
 	public AbstractNode getSource() {

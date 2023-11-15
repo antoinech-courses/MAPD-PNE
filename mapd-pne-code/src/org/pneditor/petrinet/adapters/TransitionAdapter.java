@@ -11,7 +11,7 @@ public class TransitionAdapter extends AbstractTransition {
 		this.transition = new Transition();
 	}
 	
-	public Transition getTransition() {
+	public Transition getModel() {
 		return this.transition;
 	}
 
