@@ -37,5 +37,9 @@ public class PlaceAdapter extends AbstractPlace {
 			this.place.remove(this.getTokens() - tokens);
 		}
 	}
+	
+	public Place getModel() {
+		return this.place;
+	}
 
 }
