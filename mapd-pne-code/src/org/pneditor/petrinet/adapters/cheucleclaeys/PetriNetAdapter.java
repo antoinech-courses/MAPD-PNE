@@ -1,4 +1,4 @@
-package org.pneditor.petrinet.adapters;
+package org.pneditor.petrinet.adapters.cheucleclaeys;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -10,12 +10,12 @@ import org.pneditor.petrinet.AbstractTransition;
 import org.pneditor.petrinet.PetriNetInterface;
 import org.pneditor.petrinet.ResetArcMultiplicityException;
 import org.pneditor.petrinet.UnimplementedCaseException;
-import org.pneditor.petrinet.models.Edge;
-import org.pneditor.petrinet.models.EdgeOut;
-import org.pneditor.petrinet.models.EdgeType;
-import org.pneditor.petrinet.models.PetriNet;
-import org.pneditor.petrinet.models.Place;
-import org.pneditor.petrinet.models.Transition;
+import org.pneditor.petrinet.models.cheucleclaeys.Edge;
+import org.pneditor.petrinet.models.cheucleclaeys.EdgeOut;
+import org.pneditor.petrinet.models.cheucleclaeys.EdgeType;
+import org.pneditor.petrinet.models.cheucleclaeys.PetriNet;
+import org.pneditor.petrinet.models.cheucleclaeys.Place;
+import org.pneditor.petrinet.models.cheucleclaeys.Transition;
 
 public class PetriNetAdapter extends PetriNetInterface{
 	

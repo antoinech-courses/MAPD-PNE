@@ -1,4 +1,4 @@
-package org.pneditor.petrinet.models;
+package org.pneditor.petrinet.models.cheucleclaeys;
 
 import java.security.InvalidParameterException;
 

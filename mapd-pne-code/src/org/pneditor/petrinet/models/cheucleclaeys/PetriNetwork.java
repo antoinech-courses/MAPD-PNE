@@ -1,4 +1,4 @@
-package org.pneditor.petrinet.models;
+package org.pneditor.petrinet.models.cheucleclaeys;
 
 /**
  * Interface representing the Petri network. Can be implemented to build and

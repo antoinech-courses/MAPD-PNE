@@ -1,7 +1,7 @@
-package org.pneditor.petrinet.adapters;
+package org.pneditor.petrinet.adapters.cheucleclaeys;
 
 import org.pneditor.petrinet.AbstractTransition;
-import org.pneditor.petrinet.models.Transition;
+import org.pneditor.petrinet.models.cheucleclaeys.Transition;
 
 public class TransitionAdapter extends AbstractTransition {
 	private Transition transition;

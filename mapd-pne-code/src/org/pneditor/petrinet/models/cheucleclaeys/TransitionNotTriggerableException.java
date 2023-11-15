@@ -1,4 +1,4 @@
-package org.pneditor.petrinet.models;
+package org.pneditor.petrinet.models.cheucleclaeys;
 
 /**
  * Describe an edge that has been triggered whereas the linked transition is not

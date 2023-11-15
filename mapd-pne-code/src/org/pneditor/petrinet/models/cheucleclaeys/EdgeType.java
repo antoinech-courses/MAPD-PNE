@@ -1,4 +1,4 @@
-package org.pneditor.petrinet.models;
+package org.pneditor.petrinet.models.cheucleclaeys;
 
 /**
  * Enum representing the four edges types. IN represents an edge directed from
