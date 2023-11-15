@@ -2,7 +2,7 @@ package org.pneditor.petrinet.models;
 
 import java.security.InvalidParameterException;
 
-import org.pneditor.petrinet.models.imta.Place;
+import org.pneditor.petrinet.models.Place;
 
 /**
  * This is an abstract Class to describe the theoretical shape of an edge : a

@@ -14,7 +14,7 @@ import org.pneditor.petrinet.models.Transition;
  * @author Cheucle
  *
  */
-public class PetriNet implements PetriNetwork {
+public class PetriNet {
 
 	/**
 	 * List containing all transitions of the network.
@@ -32,25 +32,21 @@ public class PetriNet implements PetriNetwork {
 		this.listPlaces = new LinkedList<Place>();
 	}
 
-	@Override
 	public void triggerTransition(Transition transition) {
 		transition.fire();
 
 	}
 
-	@Override
 	public void add(Place place) {
 		this.listPlaces.add(place);
 
 	}
 
-	@Override
 	public void add(Transition transition) {
 		this.listTransitions.add(transition);
 
 	}
 
-	@Override
 	public void add(Place place, Transition transition, int weight, EdgeType type) {
 		Edge edge = null;
 		switch (type) {
@@ -77,14 +73,12 @@ public class PetriNet implements PetriNetwork {
 		transition.addEdge(edge);
 	}
 
-	@Override
 	public void remove(Place place) {
 		this.listPlaces.remove(place);
 		// When we remove a place, we remove all edges linked to this place
 		this.listTransitions.forEach(transition -> this.remove(place, transition));
 	}
 
-	@Override
 	public void remove(Transition transition) {
 		// When removing a transition, there is no need to explicitly remove edges
 		// because edges are stored by the transition that is removed from memory by the
@@ -92,7 +86,6 @@ public class PetriNet implements PetriNetwork {
 		this.listTransitions.remove(transition);
 	}
 
-	@Override
 	public void remove(Place place, Transition transition) {
 		transition.removeEdgeFromPlace(place);
 	}
