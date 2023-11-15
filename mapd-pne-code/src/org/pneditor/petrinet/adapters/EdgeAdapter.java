@@ -13,18 +13,34 @@ import org.pneditor.petrinet.models.Transition;
 
 public class EdgeAdapter extends AbstractArc {
 	private Edge edge;
-	private Transition transition;
+	private TransitionAdapter transition;
+	private PlaceAdapter place;
 	
-	public EdgeAdapter(AbstractNode entry,AbstractNode exit,EdgeType edgeType) {
+	public EdgeAdapter(PlaceAdapter place,TransitionAdapter transition,EdgeType edgeType) {
 		switch (edgeType) {
 		case EMPTY:
-			this.transition = entry.getModel();
+			this.place = place;
+			this.transition = transition;
+			this.edge = new EdgeEmpty(place.getModel());
+			this.transition.getModel().addEdge(edge);
 			break;
 		case IN:
+			this.place = place;
+			this.transition = transition;
+			this.edge = new EdgeIn(place.getModel());
+			this.transition.getModel().addEdge(edge);
 			break;
 		case OUT:
+			this.place = place;
+			this.transition = transition;
+			this.edge = new EdgeOut(place.getModel());
+			this.transition.getModel().addEdge(edge);
 			break;
 		case ZERO:
+			this.place = place;
+			this.transition = transition;
+			this.edge = new EdgeZero(place.getModel());
+			this.transition.getModel().addEdge(edge);
 			break;
 		default:
 			break;
@@ -36,11 +52,10 @@ public class EdgeAdapter extends AbstractArc {
 	public AbstractNode getSource() {
 		// TODO Auto-generated method stub
 		if (this.edge instanceof EdgeIn) {
-			return null; //faire qqch ici
+			return this.transition; 
 		}
 		else {
-			PlaceAdapter place = new PlaceAdapter("bebou");
-			place.setTokens(this.edge.getPlace().getCountTokens());
+			return this.place;
 		}
 	}
 
@@ -48,11 +63,10 @@ public class EdgeAdapter extends AbstractArc {
 	public AbstractNode getDestination() {
 		// TODO Auto-generated method stub
 		if (this.edge instanceof EdgeIn) {
-			PlaceAdapter place = new PlaceAdapter("bebou");
-			place.setTokens(this.edge.getPlace().getCountTokens());
+			return this.place;
 		}
 		else {
-			return null; //faire qqch ici
+			return this.transition; 
 		}
 	}
 
