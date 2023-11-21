@@ -46,7 +46,7 @@ public class EdgeAdapter extends AbstractArc {
 	//In, Out
 	public boolean isRegular() {
 		// TODO Auto-generated method stub
-		return (this.edge instanceof EdgeIn || this.edge instanceof EdgeOut);
+		return ((this.edge instanceof EdgeIn || this.edge instanceof EdgeOut) && !(this.edge instanceof EdgeZero) && !(this.edge instanceof EdgeEmpty));
 	}
 
 	@Override

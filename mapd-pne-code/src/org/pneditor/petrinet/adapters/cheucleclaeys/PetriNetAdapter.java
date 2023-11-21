@@ -1,5 +1,6 @@
 package org.pneditor.petrinet.adapters.cheucleclaeys;
 
+import java.security.InvalidParameterException;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -17,14 +18,14 @@ import org.pneditor.petrinet.models.cheucleclaeys.PetriNet;
 import org.pneditor.petrinet.models.cheucleclaeys.Place;
 import org.pneditor.petrinet.models.cheucleclaeys.Transition;
 
-public class PetriNetAdapter extends PetriNetInterface{
-	
+public class PetriNetAdapter extends PetriNetInterface {
+
 	private PetriNet network;
-	
+
 	public PetriNetAdapter() {
 		this.network = new PetriNet();
 	}
-	
+
 	@Override
 	public AbstractPlace addPlace() {
 		PlaceAdapter place = new PlaceAdapter("");
@@ -42,58 +43,79 @@ public class PetriNetAdapter extends PetriNetInterface{
 	@Override
 	// IN, OUT
 	public AbstractArc addRegularArc(AbstractNode source, AbstractNode destination) throws UnimplementedCaseException {
-		List<Edge> edgeList;
-		if (source instanceof AbstractTransition) {
-			network.add(((PlaceAdapter)destination).getModel(), ((TransitionAdapter)source).getModel(), 1, EdgeType.IN);
-			edgeList = ((TransitionAdapter)source).getModel().getEdges();
+		try {
+			List<Edge> edgeList;
+			if (source instanceof AbstractTransition) {
+				network.add(((PlaceAdapter) destination).getModel(), ((TransitionAdapter) source).getModel(), 1,
+						EdgeType.IN);
+				edgeList = ((TransitionAdapter) source).getModel().getEdges();
+			} else {
+				network.add(((PlaceAdapter) source).getModel(), ((TransitionAdapter) destination).getModel(), 1,
+						EdgeType.OUT);
+				edgeList = ((TransitionAdapter) destination).getModel().getEdges();
+			}
+			return new EdgeAdapter(source, destination, edgeList.get(edgeList.size() - 1));
+		} catch (InvalidParameterException e) {
+			System.err.println("Error : " + e.getMessage());
+			return null;
 		}
-		else {
-			network.add(((PlaceAdapter)source).getModel(), ((TransitionAdapter)destination).getModel(), 1, EdgeType.OUT);
-			edgeList = ((TransitionAdapter)destination).getModel().getEdges();
-		}
-		return new EdgeAdapter(source, destination, edgeList.get(edgeList.size() - 1));
 	}
 
 	@Override
 	// EMPTY
 	public AbstractArc addInhibitoryArc(AbstractPlace place, AbstractTransition transition)
 			throws UnimplementedCaseException {
-		network.add(((PlaceAdapter)place).getModel(), ((TransitionAdapter)transition).getModel(), 1, EdgeType.ZERO);
-		List<Edge> edgeList = ((TransitionAdapter)transition).getModel().getEdges();
-		return new EdgeAdapter(place, transition, edgeList.get(edgeList.size() - 1));
+		try {
+			network.add(((PlaceAdapter) place).getModel(), ((TransitionAdapter) transition).getModel(), 1,
+					EdgeType.ZERO);
+			List<Edge> edgeList = ((TransitionAdapter) transition).getModel().getEdges();
+			return new EdgeAdapter(place, transition, edgeList.get(edgeList.size() - 1));
+		} catch (InvalidParameterException e) {
+			System.err.println("Error : " + e.getMessage());
+			return null;
+		}
 	}
 
 	@Override
 	// ZERO
 	public AbstractArc addResetArc(AbstractPlace place, AbstractTransition transition)
 			throws UnimplementedCaseException {
-		network.add(((PlaceAdapter)place).getModel(), ((TransitionAdapter)transition).getModel(), 1, EdgeType.EMPTY);
-		List<Edge> edgeList = ((TransitionAdapter)transition).getModel().getEdges();
-		return new EdgeAdapter(place, transition, edgeList.get(edgeList.size() - 1));
+		try {
+			network.add(((PlaceAdapter) place).getModel(), ((TransitionAdapter) transition).getModel(), 1,
+					EdgeType.EMPTY);
+			List<Edge> edgeList = ((TransitionAdapter) transition).getModel().getEdges();
+			return new EdgeAdapter(place, transition, edgeList.get(edgeList.size() - 1));
+		} catch (InvalidParameterException e) {
+			System.err.println("Error : " + e.getMessage());
+			return null;
+		}
 	}
 
 	@Override
 	public void removePlace(AbstractPlace place) {
-		this.network.remove(((PlaceAdapter)place).getModel());
+		this.network.remove(((PlaceAdapter) place).getModel());
 	}
 
 	@Override
 	public void removeTransition(AbstractTransition transition) {
-		this.network.remove(((TransitionAdapter)transition).getModel());
-		
+		this.network.remove(((TransitionAdapter) transition).getModel());
+
 	}
 
 	@Override
 	public void removeArc(AbstractArc arc) {
-		Place place = (arc.getSource() instanceof PlaceAdapter) ? ((PlaceAdapter)arc.getSource()).getModel() : ((PlaceAdapter)arc.getDestination()).getModel();
-		Transition transition = (arc.getSource() instanceof TransitionAdapter) ? ((TransitionAdapter)arc.getSource()).getModel() : ((TransitionAdapter)arc.getDestination()).getModel();
+		Place place = (arc.getSource() instanceof PlaceAdapter) ? ((PlaceAdapter) arc.getSource()).getModel()
+				: ((PlaceAdapter) arc.getDestination()).getModel();
+		Transition transition = (arc.getSource() instanceof TransitionAdapter)
+				? ((TransitionAdapter) arc.getSource()).getModel()
+				: ((TransitionAdapter) arc.getDestination()).getModel();
 		EdgeType type = (arc.getSource() instanceof PlaceAdapter) ? EdgeType.OUT : EdgeType.IN;
-		network.remove(place, transition,type);
+		network.remove(place, transition, type);
 	}
 
 	@Override
 	public boolean isEnabled(AbstractTransition transition) throws ResetArcMultiplicityException {
-		Transition transitionModel = ((TransitionAdapter)transition).getModel();
+		Transition transitionModel = ((TransitionAdapter) transition).getModel();
 		boolean triggerable = true;
 		for (Edge edge : transitionModel.getEdges()) {
 			if (edge instanceof EdgeOut) {
@@ -107,8 +129,8 @@ public class PetriNetAdapter extends PetriNetInterface{
 
 	@Override
 	public void fire(AbstractTransition transition) throws ResetArcMultiplicityException {
-		this.network.triggerTransition(((TransitionAdapter)transition).getModel());
-		
+		this.network.triggerTransition(((TransitionAdapter) transition).getModel());
+
 	}
 
 }
