@@ -27,14 +27,14 @@ public class PetriNetAdapter extends PetriNetInterface{
 	
 	@Override
 	public AbstractPlace addPlace() {
-		PlaceAdapter place = new PlaceAdapter("béboué");
+		PlaceAdapter place = new PlaceAdapter("");
 		this.network.add(place.getModel());
 		return place;
 	}
 
 	@Override
 	public AbstractTransition addTransition() {
-		TransitionAdapter transtion = new TransitionAdapter("béboué");
+		TransitionAdapter transtion = new TransitionAdapter("");
 		this.network.add(transtion.getModel());
 		return transtion;
 	}
