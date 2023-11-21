@@ -93,8 +93,12 @@ public class PetriNet implements PetriNetwork {
 	}
 
 	@Override
+	public void remove(Place place, Transition transition,EdgeType type) {
+		transition.removeEdgeFromPlace(place,type);
+	}
+	
 	public void remove(Place place, Transition transition) {
-		transition.removeEdgeFromPlace(place);
+		transition.removeAllEdgesFromPlace(place);
 	}
 
 	/**

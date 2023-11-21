@@ -87,7 +87,8 @@ public class PetriNetAdapter extends PetriNetInterface{
 	public void removeArc(AbstractArc arc) {
 		Place place = (arc.getSource() instanceof PlaceAdapter) ? ((PlaceAdapter)arc.getSource()).getModel() : ((PlaceAdapter)arc.getDestination()).getModel();
 		Transition transition = (arc.getSource() instanceof TransitionAdapter) ? ((TransitionAdapter)arc.getSource()).getModel() : ((TransitionAdapter)arc.getDestination()).getModel();
-		network.remove(place, transition);
+		EdgeType type = (arc.getSource() instanceof PlaceAdapter) ? EdgeType.OUT : EdgeType.IN;
+		network.remove(place, transition,type);
 	}
 
 	@Override

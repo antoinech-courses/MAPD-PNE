@@ -77,7 +77,25 @@ public class Transition {
 	 * 
 	 * @param place Linked place to remove the edge from
 	 */
-	public void removeEdgeFromPlace(Place place) {
+	public void removeEdgeFromPlace(Place place,EdgeType type) {
+		// Remove edge from list only if its place is the given parameter
+		switch (type) {
+			case IN: 
+				this.edges.removeIf(edge -> (edge.getPlace() == place)&& edge instanceof EdgeIn);
+				break;	
+			case OUT:
+				this.edges.removeIf(edge -> (edge.getPlace() == place)&& edge instanceof EdgeOut);
+				break;
+			case EMPTY:
+				this.edges.removeIf(edge -> (edge.getPlace() == place)&& edge instanceof EdgeEmpty);
+				break;
+			case ZERO:
+				this.edges.removeIf(edge -> (edge.getPlace() == place)&& edge instanceof EdgeZero);
+				break;
+		}
+	}
+	
+	public void removeAllEdgesFromPlace(Place place) {
 		// Remove edge from list only if its place is the given parameter
 		this.edges.removeIf(edge -> (edge.getPlace() == place));
 	}
