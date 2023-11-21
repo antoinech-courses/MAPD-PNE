@@ -58,7 +58,7 @@ public class PetriNetAdapter extends PetriNetInterface{
 	// EMPTY
 	public AbstractArc addInhibitoryArc(AbstractPlace place, AbstractTransition transition)
 			throws UnimplementedCaseException {
-		network.add(((PlaceAdapter)place).getModel(), ((TransitionAdapter)transition).getModel(), 1, EdgeType.EMPTY);
+		network.add(((PlaceAdapter)place).getModel(), ((TransitionAdapter)transition).getModel(), 1, EdgeType.ZERO);
 		List<Edge> edgeList = ((TransitionAdapter)transition).getModel().getEdges();
 		return new EdgeAdapter(place, transition, edgeList.get(edgeList.size() - 1));
 	}
@@ -67,7 +67,7 @@ public class PetriNetAdapter extends PetriNetInterface{
 	// ZERO
 	public AbstractArc addResetArc(AbstractPlace place, AbstractTransition transition)
 			throws UnimplementedCaseException {
-		network.add(((PlaceAdapter)place).getModel(), ((TransitionAdapter)transition).getModel(), 1, EdgeType.ZERO);
+		network.add(((PlaceAdapter)place).getModel(), ((TransitionAdapter)transition).getModel(), 1, EdgeType.EMPTY);
 		List<Edge> edgeList = ((TransitionAdapter)transition).getModel().getEdges();
 		return new EdgeAdapter(place, transition, edgeList.get(edgeList.size() - 1));
 	}

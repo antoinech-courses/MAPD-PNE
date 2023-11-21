@@ -39,7 +39,7 @@ public class EdgeAdapter extends AbstractArc {
 	//Zero
 	public boolean isReset() {
 		// TODO Auto-generated method stub
-		return (this.edge instanceof EdgeZero);
+		return (this.edge instanceof EdgeEmpty);
 	}
 
 	@Override
@@ -53,7 +53,7 @@ public class EdgeAdapter extends AbstractArc {
 	//Empty
 	public boolean isInhibitory() {
 		// TODO Auto-generated method stub
-		return (this.edge instanceof EdgeEmpty);
+		return (this.edge instanceof EdgeZero);
 	}
 
 	@Override
