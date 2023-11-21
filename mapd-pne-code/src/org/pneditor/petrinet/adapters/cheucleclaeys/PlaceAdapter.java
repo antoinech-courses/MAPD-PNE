@@ -1,7 +1,7 @@
-package org.pneditor.petrinet.adapters;
+package org.pneditor.petrinet.adapters.cheucleclaeys;
 
 import org.pneditor.petrinet.AbstractPlace;
-import org.pneditor.petrinet.models.Place;
+import org.pneditor.petrinet.models.cheucleclaeys.Place;
 
 public class PlaceAdapter extends AbstractPlace {
 	private Place place;

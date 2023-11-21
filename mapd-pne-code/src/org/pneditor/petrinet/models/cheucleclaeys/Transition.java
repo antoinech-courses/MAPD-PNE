@@ -1,11 +1,11 @@
-package org.pneditor.petrinet.models;
+package org.pneditor.petrinet.models.cheucleclaeys;
 
 import java.security.InvalidParameterException;
 import java.util.LinkedList;
 import java.util.List;
 
-import org.pneditor.petrinet.models.Edge;
-import org.pneditor.petrinet.models.Place;
+import org.pneditor.petrinet.models.cheucleclaeys.Edge;
+import org.pneditor.petrinet.models.cheucleclaeys.Place;
 
 /**
  * Reprensents a transition in a PetriNet

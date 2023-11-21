@@ -1,8 +1,8 @@
-package org.pneditor.petrinet.models;
+package org.pneditor.petrinet.models.cheucleclaeys;
 
 import java.security.InvalidParameterException;
 
-import org.pneditor.petrinet.models.Place;
+import org.pneditor.petrinet.models.cheucleclaeys.Place;
 
 /**
  * This is an abstract Class to describe the theoretical shape of an edge : a

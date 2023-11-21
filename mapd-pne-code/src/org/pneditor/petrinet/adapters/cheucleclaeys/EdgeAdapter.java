@@ -1,15 +1,15 @@
-package org.pneditor.petrinet.adapters;
+package org.pneditor.petrinet.adapters.cheucleclaeys;
 
 import org.pneditor.petrinet.AbstractArc;
 import org.pneditor.petrinet.AbstractNode;
 import org.pneditor.petrinet.ResetArcMultiplicityException;
-import org.pneditor.petrinet.models.Edge;
-import org.pneditor.petrinet.models.EdgeEmpty;
-import org.pneditor.petrinet.models.EdgeIn;
-import org.pneditor.petrinet.models.EdgeOut;
-import org.pneditor.petrinet.models.EdgeType;
-import org.pneditor.petrinet.models.EdgeZero;
-import org.pneditor.petrinet.models.Transition;
+import org.pneditor.petrinet.models.cheucleclaeys.Edge;
+import org.pneditor.petrinet.models.cheucleclaeys.EdgeEmpty;
+import org.pneditor.petrinet.models.cheucleclaeys.EdgeIn;
+import org.pneditor.petrinet.models.cheucleclaeys.EdgeOut;
+import org.pneditor.petrinet.models.cheucleclaeys.EdgeType;
+import org.pneditor.petrinet.models.cheucleclaeys.EdgeZero;
+import org.pneditor.petrinet.models.cheucleclaeys.Transition;
 
 public class EdgeAdapter extends AbstractArc {
 	private Edge edge;

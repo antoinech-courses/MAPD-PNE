@@ -1,6 +1,6 @@
-package org.pneditor.petrinet.models;
+package org.pneditor.petrinet.models.cheucleclaeys;
 
-import org.pneditor.petrinet.models.Place;
+import org.pneditor.petrinet.models.cheucleclaeys.Place;
 
 /**
  * Represents a specific OUT edge, only activated if the linked place is empty
