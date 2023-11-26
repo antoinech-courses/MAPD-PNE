@@ -15,7 +15,7 @@ public class EdgeAdapter extends AbstractArc {
 	private Edge edge;
 	private AbstractNode source;
 	private AbstractNode destination;
-	
+
 	public EdgeAdapter(AbstractNode source, AbstractNode destination, Edge edge) {
 		this.edge = edge;
 		this.source = source;
@@ -32,25 +32,26 @@ public class EdgeAdapter extends AbstractArc {
 	public AbstractNode getDestination() {
 		// TODO Auto-generated method stub
 		return this.destination;
-		
+
 	}
 
 	@Override
-	//Zero
+	// Zero
 	public boolean isReset() {
 		// TODO Auto-generated method stub
 		return (this.edge instanceof EdgeEmpty);
 	}
 
 	@Override
-	//In, Out
+	// In, Out
 	public boolean isRegular() {
 		// TODO Auto-generated method stub
-		return ((this.edge instanceof EdgeIn || this.edge instanceof EdgeOut) && !(this.edge instanceof EdgeZero) && !(this.edge instanceof EdgeEmpty));
+		return ((this.edge instanceof EdgeIn || this.edge instanceof EdgeOut) && !(this.edge instanceof EdgeZero)
+				&& !(this.edge instanceof EdgeEmpty));
 	}
 
 	@Override
-	//Empty
+	// Empty
 	public boolean isInhibitory() {
 		// TODO Auto-generated method stub
 		return (this.edge instanceof EdgeZero);
