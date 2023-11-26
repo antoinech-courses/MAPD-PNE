@@ -11,6 +11,10 @@ import org.pneditor.petrinet.models.cheucleclaeys.EdgeType;
 import org.pneditor.petrinet.models.cheucleclaeys.EdgeZero;
 import org.pneditor.petrinet.models.cheucleclaeys.Transition;
 
+/** A class to implements the AbstractArc model using the edges functions of our petriNetwork
+ * @author natha
+ */
+
 public class EdgeAdapter extends AbstractArc {
 	private Edge edge;
 	private AbstractNode source;
@@ -22,12 +26,19 @@ public class EdgeAdapter extends AbstractArc {
 		this.destination = destination;
 	}
 
+	
+	/**
+	 *Give the source of the edge (place if edgeOut and transition if edgeIn)
+	 */
 	@Override
 	public AbstractNode getSource() {
 		// TODO Auto-generated method stub
 		return this.source;
 	}
 
+	/**
+	 *Give the destination of the edge (place if edgeIn and transition if edgeOut)
+	 */
 	@Override
 	public AbstractNode getDestination() {
 		// TODO Auto-generated method stub
@@ -35,13 +46,20 @@ public class EdgeAdapter extends AbstractArc {
 
 	}
 
+	/**
+	 *Tells if the edge is a reset edge
+	 *In our model it correspond to an EdgeEmpty
+	 */
 	@Override
-	// Zero
+	// Empty
 	public boolean isReset() {
 		// TODO Auto-generated method stub
 		return (this.edge instanceof EdgeEmpty);
 	}
 
+	/**
+	 *Tells if the edge is a simple edge (in or out)
+	 */
 	@Override
 	// In, Out
 	public boolean isRegular() {
@@ -50,19 +68,31 @@ public class EdgeAdapter extends AbstractArc {
 				&& !(this.edge instanceof EdgeEmpty));
 	}
 
+	/**
+	 *Tells if the edge is an inhibitory edge
+	 *In our model it correspond to an EdgeZero
+	 */
 	@Override
-	// Empty
+	// Zero
 	public boolean isInhibitory() {
 		// TODO Auto-generated method stub
 		return (this.edge instanceof EdgeZero);
 	}
 
+	/**
+	 *Give the multiplicity/the weight of the edge
+	 *@return int weight
+	 */
 	@Override
 	public int getMultiplicity() throws ResetArcMultiplicityException {
 		// TODO Auto-generated method stub
 		return this.edge.getWeight();
 	}
 
+	/**
+	 * Allows us to change the weight of an edge 
+	 *@param int new weight
+	 */
 	@Override
 	public void setMultiplicity(int multiplicity) throws ResetArcMultiplicityException {
 		// TODO Auto-generated method stub
