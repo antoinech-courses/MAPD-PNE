@@ -11,8 +11,9 @@ import org.pneditor.petrinet.models.cheucleclaeys.EdgeType;
 import org.pneditor.petrinet.models.cheucleclaeys.EdgeZero;
 import org.pneditor.petrinet.models.cheucleclaeys.Transition;
 
-/** A class to implements the AbstractArc model using the edges functions of our petriNetwork
+/** 
  * @author natha
+ * A class to implements the AbstractArc model using edges functions of our petriNetwork
  */
 
 public class EdgeAdapter extends AbstractArc {
