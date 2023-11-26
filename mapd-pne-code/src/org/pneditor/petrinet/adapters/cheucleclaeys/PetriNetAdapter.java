@@ -73,7 +73,7 @@ public class PetriNetAdapter extends PetriNetInterface {
 			}
 			return new EdgeAdapter(source, destination, edgeList.get(edgeList.size() - 1));
 		} catch (InvalidParameterException e) {
-			// throx error is edge already exist
+			// throw error is edge already exist
 			System.err.println("Error : " + e.getMessage());
 			return null;
 		}
@@ -94,7 +94,7 @@ public class PetriNetAdapter extends PetriNetInterface {
 			List<Edge> edgeList = ((TransitionAdapter) transition).getModel().getEdges();
 			return new EdgeAdapter(place, transition, edgeList.get(edgeList.size() - 1));
 		} catch (InvalidParameterException e) {
-			// throx error is edge already exist
+			// throw error is edge already exist
 			System.err.println("Error : " + e.getMessage());
 			return null;
 		}
@@ -115,7 +115,7 @@ public class PetriNetAdapter extends PetriNetInterface {
 			List<Edge> edgeList = ((TransitionAdapter) transition).getModel().getEdges();
 			return new EdgeAdapter(place, transition, edgeList.get(edgeList.size() - 1));
 		} catch (InvalidParameterException e) {
-			// throx error is edge already exist
+			// throw error is edge already exist
 			System.err.println("Error : " + e.getMessage());
 			return null;
 		}
