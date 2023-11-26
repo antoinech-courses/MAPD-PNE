@@ -7,9 +7,7 @@ import org.pneditor.petrinet.models.cheucleclaeys.Edge;
 import org.pneditor.petrinet.models.cheucleclaeys.EdgeEmpty;
 import org.pneditor.petrinet.models.cheucleclaeys.EdgeIn;
 import org.pneditor.petrinet.models.cheucleclaeys.EdgeOut;
-import org.pneditor.petrinet.models.cheucleclaeys.EdgeType;
 import org.pneditor.petrinet.models.cheucleclaeys.EdgeZero;
-import org.pneditor.petrinet.models.cheucleclaeys.Transition;
 
 /** 
  * @author Nathan Claeys
