@@ -18,8 +18,8 @@ import org.pneditor.petrinet.models.cheucleclaeys.Place;
 import org.pneditor.petrinet.models.cheucleclaeys.Transition;
 
 /**
- * @author Antoine Cheucle
- *A class to extends the PetriNetInterface model using petriNet functions of our petriNetwork
+ * @author Antoine Cheucle A class to extends the PetriNetInterface model using
+ *         petriNet functions of our petriNetwork
  */
 public class PetriNetAdapter extends PetriNetInterface {
 
@@ -30,8 +30,7 @@ public class PetriNetAdapter extends PetriNetInterface {
 	}
 
 	/**
-	 *Allows us to add a place to our network.
-	 *The place will start with 0 token
+	 * Allows us to add a place to our network. The place will start with 0 token
 	 */
 	@Override
 	public AbstractPlace addPlace() {
@@ -41,7 +40,7 @@ public class PetriNetAdapter extends PetriNetInterface {
 	}
 
 	/**
-	 *Allows us to add a transition to our network
+	 * Allows us to add a transition to our network
 	 */
 	@Override
 	public AbstractTransition addTransition() {
@@ -51,16 +50,18 @@ public class PetriNetAdapter extends PetriNetInterface {
 	}
 
 	/**
-	 * Allows us to add a regular edge.
-	 * The type in or out is defined by the order of the parameters.
-	 * If the first one is a transition, it will be an edgeIn. On the contrary it will be an edgeOut
-	 *@param two AbstractNode
+	 * Allows us to add a regular edge. The type in or out is defined by the order
+	 * of the parameters. If the first one is a transition, it will be an edgeIn. On
+	 * the contrary it will be an edgeOut
+	 * 
+	 * @param two AbstractNode
 	 */
 	@Override
 	// IN, OUT
 	public AbstractArc addRegularArc(AbstractNode source, AbstractNode destination) throws UnimplementedCaseException {
 		try {
 			List<Edge> edgeList;
+			// Depending of the type of the source, the edge is IN or OUT
 			if (source instanceof AbstractTransition) {
 				network.add(((PlaceAdapter) destination).getModel(), ((TransitionAdapter) source).getModel(), 1,
 						EdgeType.IN);
@@ -72,6 +73,7 @@ public class PetriNetAdapter extends PetriNetInterface {
 			}
 			return new EdgeAdapter(source, destination, edgeList.get(edgeList.size() - 1));
 		} catch (InvalidParameterException e) {
+			// throx error is edge already exist
 			System.err.println("Error : " + e.getMessage());
 			return null;
 		}
@@ -79,7 +81,8 @@ public class PetriNetAdapter extends PetriNetInterface {
 
 	/**
 	 * Allows us to add an inhibitory edge (zero) to our model
-	 *@param an AbstractPlace and An AbstractTransition
+	 * 
+	 * @param an AbstractPlace and An AbstractTransition
 	 */
 	@Override
 	// ZERO
@@ -91,6 +94,7 @@ public class PetriNetAdapter extends PetriNetInterface {
 			List<Edge> edgeList = ((TransitionAdapter) transition).getModel().getEdges();
 			return new EdgeAdapter(place, transition, edgeList.get(edgeList.size() - 1));
 		} catch (InvalidParameterException e) {
+			// throx error is edge already exist
 			System.err.println("Error : " + e.getMessage());
 			return null;
 		}
@@ -98,7 +102,8 @@ public class PetriNetAdapter extends PetriNetInterface {
 
 	/**
 	 * Allows us to add an reset edge (empty) to our model
-	 *@param an AbstractPlace and An AbstractTransition
+	 * 
+	 * @param an AbstractPlace and An AbstractTransition
 	 */
 	@Override
 	// EMPTY
@@ -110,14 +115,16 @@ public class PetriNetAdapter extends PetriNetInterface {
 			List<Edge> edgeList = ((TransitionAdapter) transition).getModel().getEdges();
 			return new EdgeAdapter(place, transition, edgeList.get(edgeList.size() - 1));
 		} catch (InvalidParameterException e) {
+			// throx error is edge already exist
 			System.err.println("Error : " + e.getMessage());
 			return null;
 		}
 	}
 
 	/**
-	 *Allows us to remove a given place from the network and associated edges
-	 *@param an AbstractPlace
+	 * Allows us to remove a given place from the network and associated edges
+	 * 
+	 * @param an AbstractPlace
 	 */
 	@Override
 	public void removePlace(AbstractPlace place) {
@@ -125,8 +132,9 @@ public class PetriNetAdapter extends PetriNetInterface {
 	}
 
 	/**
-	 *Allows us to remove a given transition from the network and associated edges
-	 *@param an AbstractTransition
+	 * Allows us to remove a given transition from the network and associated edges
+	 * 
+	 * @param an AbstractTransition
 	 */
 	@Override
 	public void removeTransition(AbstractTransition transition) {
@@ -135,11 +143,13 @@ public class PetriNetAdapter extends PetriNetInterface {
 	}
 
 	/**
-	 *Allows us to remove a given edge from the network
-	 *@param an AbstractArc
+	 * Allows us to remove a given edge from the network
+	 * 
+	 * @param an AbstractArc
 	 */
 	@Override
 	public void removeArc(AbstractArc arc) {
+		// We get the place and transition from edge, depending of the source and destination
 		Place place = (arc.getSource() instanceof PlaceAdapter) ? ((PlaceAdapter) arc.getSource()).getModel()
 				: ((PlaceAdapter) arc.getDestination()).getModel();
 		Transition transition = (arc.getSource() instanceof TransitionAdapter)
@@ -150,8 +160,10 @@ public class PetriNetAdapter extends PetriNetInterface {
 	}
 
 	/**
-	 *Tells us if the transition is triggerable. It means that all associated edges are ready to be trigger.
-	 *@param an AbstractTransition
+	 * Tells us if the transition is triggerable. It means that all associated edges
+	 * are ready to be trigger.
+	 * 
+	 * @param an AbstractTransition
 	 */
 	@Override
 	public boolean isEnabled(AbstractTransition transition) throws ResetArcMultiplicityException {
@@ -168,8 +180,9 @@ public class PetriNetAdapter extends PetriNetInterface {
 	}
 
 	/**
-	 *Allows us to trigger a transition and moves tokens between places
-	 *@param an AbstractTransition 
+	 * Allows us to trigger a transition and moves tokens between places
+	 * 
+	 * @param an AbstractTransition
 	 */
 	@Override
 	public void fire(AbstractTransition transition) throws ResetArcMultiplicityException {
