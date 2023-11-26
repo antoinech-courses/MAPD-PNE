@@ -1,28 +1,18 @@
-PNEditor (Petri Net editor)
-========
+# Petri-Network
+Par Nathan Claeys et Antoine Cheucle
 
-The original PNE can be downloaded from [www.pneditor.org](http://www.pneditor.org/)
+## Description
+Ce projet implémente notre réseau de Pétri avec l'interface PNE. Il implémente les éléments atomiques constitutifs de cette structure : des transitions, des places (avec un certain nombre de jetons), et 4 types d'arcs différents, faisant le lien entre les transitions et les places. Il existe deux arcs basiques : entrant et sortant (d'une place), et deux arcs sortants particuliers (arc zéro et arc videur).
 
-This instance is the result of a student project by Joris Thaveau for teaching purpose.
+## Environnement
+Version d'Eclipse : 2022-06
+Java Runtime Environment 11
 
-It is a simplified Petri net editor that allows the editing of many PetriNet models.
+## Exécution
+Exécuter le fichier Main.java du package org.pneditor.editor pour lancer l'interface. Sélectionner le moèdle `cheucleclaeys`.
 
-To use:
+## Tests
+Il est possible de réaliser tous les tests unitaires directement depuis l'interface graphique.
 
-1. Run org.pneditor.editor.Main as a Java application
-2. Select the model used (the menu scans the org.pneditor.petrinet.adapters folder to build a list of available models and adapters). initial and imta are available. Places and transitions are displayed in different ways.
-3. Edit the PetriNet and fire transitions.
-
-You may experiment some unexpected exceptions. Especially if you mix models.
-
-The pedagogical approach consists in:
-
-1. Develop your own PetriNet model in an independent project/environment - with no GUI, just the ''business'' view
-2. Pack it as a jar, and let it be visible in the path
-3. Develop an Adapter in the org.pneditor.petrinet.adapters folder of PNE to make your model editable
-
-The adapter may be simple or complex depending on the "distance" between your model and the one expected by PNE.
-
-Code license: [GNU GPL v3](http://www.gnu.org/licenses/gpl.html)
-
-Requirements: Java SE 8+
+## Code
+Le code de l'adaptation du modèle avec des patterns Adapteurs se situe dans le package `org.pneditor.petrinet.adapters.cheucleclaeys`
