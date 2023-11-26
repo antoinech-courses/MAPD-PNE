@@ -1,8 +1,5 @@
 package org.pneditor.petrinet.models.cheucleclaeys;
 
-import org.pneditor.petrinet.models.cheucleclaeys.Edge;
-import org.pneditor.petrinet.models.cheucleclaeys.Place;
-
 /**
  * Reprensents an edge that goes towards the transition
  * 

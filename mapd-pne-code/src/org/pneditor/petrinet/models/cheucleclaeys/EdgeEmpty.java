@@ -1,7 +1,5 @@
 package org.pneditor.petrinet.models.cheucleclaeys;
 
-import org.pneditor.petrinet.models.cheucleclaeys.Place;
-
 /**
  * Represents a specific OUT edge, only activated if the linked place is not
  * empty and removes all tokens from it

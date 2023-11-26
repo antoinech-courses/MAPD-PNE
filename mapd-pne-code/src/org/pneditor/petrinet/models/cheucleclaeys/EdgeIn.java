@@ -1,8 +1,5 @@
 package org.pneditor.petrinet.models.cheucleclaeys;
 
-import org.pneditor.petrinet.models.cheucleclaeys.Edge;
-import org.pneditor.petrinet.models.cheucleclaeys.Place;
-
 /**
  * Represents edge that goes inside a place. It will add its weight in tokens to
  * the place associated
