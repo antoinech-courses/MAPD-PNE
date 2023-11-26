@@ -171,7 +171,7 @@ public class PetriNetAdapter extends PetriNetInterface {
 		boolean triggerable = true;
 		for (Edge edge : transitionModel.getEdges()) {
 			if (edge instanceof EdgeOut) {
-				// Remaines true only if all edges are triggerable
+				// Remains true only if all edges are triggerable
 				// Forced cast as EdgeOut as we only check OUT edges for trigger
 				triggerable &= (((EdgeOut) edge).isTriggerable());
 			}
