@@ -5,7 +5,7 @@ import org.pneditor.petrinet.models.cheucleclaeys.Place;
 
 
 /**
- * @author natha
+ * @author Antoine Cheucle
  *A class to implements the AbstractPlace model using place functions of our petriNetwork
  */
 public class PlaceAdapter extends AbstractPlace {

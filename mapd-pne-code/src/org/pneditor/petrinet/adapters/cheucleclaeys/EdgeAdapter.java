@@ -10,7 +10,7 @@ import org.pneditor.petrinet.models.cheucleclaeys.EdgeOut;
 import org.pneditor.petrinet.models.cheucleclaeys.EdgeZero;
 
 /** 
- * @author natha
+ * @author Nathan Claeys
  * A class to implements the AbstractArc model using edges functions of our petriNetwork
  */
 
