@@ -69,7 +69,7 @@ public class PetriNet implements PetriNetwork {
 		case EMPTY:
 			edge = new EdgeEmpty(place);
 			break;
-		
+
 		default:
 			throw new InvalidParameterException("Edge type must be IN, OUT, ZERO or EMPTY");
 		}
@@ -93,10 +93,10 @@ public class PetriNet implements PetriNetwork {
 	}
 
 	@Override
-	public void remove(Place place, Transition transition,EdgeType type) {
-		transition.removeEdgeFromPlace(place,type);
+	public void remove(Place place, Transition transition, EdgeType type) {
+		transition.removeEdgeFromPlace(place, type);
 	}
-	
+
 	public void remove(Place place, Transition transition) {
 		transition.removeAllEdgesFromPlace(place);
 	}

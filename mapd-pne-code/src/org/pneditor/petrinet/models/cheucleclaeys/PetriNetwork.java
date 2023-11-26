@@ -63,6 +63,6 @@ public interface PetriNetwork {
 	 * @param place      Place linked to edge
 	 * @param transition Transition linked to edge
 	 */
-	public void remove(Place place, Transition transition,EdgeType type);
+	public void remove(Place place, Transition transition, EdgeType type);
 
 }

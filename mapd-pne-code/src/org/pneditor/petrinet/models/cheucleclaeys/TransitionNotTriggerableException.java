@@ -2,8 +2,7 @@ package org.pneditor.petrinet.models.cheucleclaeys;
 
 /**
  * Describe an edge that has been triggered whereas the linked transition is not
- * triggerable.
- * Unchecked exception.
+ * triggerable. Unchecked exception.
  * 
  * @author Cheucle
  *

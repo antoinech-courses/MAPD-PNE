@@ -15,7 +15,7 @@ public abstract class Edge {
 	 * Weight of the edge. Represent the quantity of tokens to add/remove to/from
 	 * place.
 	 */
-	
+
 	private int weight;
 	/**
 	 * Linked place of the edge. The edge can point to the place, or point out of
@@ -27,7 +27,7 @@ public abstract class Edge {
 	 * Building an edge linked to a place
 	 * 
 	 * @param weight Weight of the edge (must be strictly positive)
-	 * @param place Place to link
+	 * @param place  Place to link
 	 */
 	public Edge(int weight, Place place) {
 		if (weight <= 0) {
@@ -62,15 +62,17 @@ public abstract class Edge {
 	public int getWeight() {
 		return this.weight;
 	}
-	
-	/** Change the edge's value (weight)
+
+	/**
+	 * Change the edge's value (weight)
+	 * 
 	 * @param weight New weight of the edge (must be strictly positive)
 	 */
 	public void setWeight(int weight) {
 		if (weight <= 0) {
 			throw new InvalidParameterException("Edge weight must be positive");
 		}
-		this.weight = weight;		
+		this.weight = weight;
 	}
 
 }

@@ -29,7 +29,7 @@ public class EdgeOut extends Edge {
 	public EdgeOut(Place place) {
 		this(1, place);
 	}
-	
+
 	/**
 	 * Returns if the edge is triggerable, ie if its place has more tokens than the
 	 * weight
