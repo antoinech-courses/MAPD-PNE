@@ -1,7 +1,6 @@
 package org.pneditor.petrinet.adapters.cheucleclaeys;
 
 import java.security.InvalidParameterException;
-import java.util.LinkedList;
 import java.util.List;
 
 import org.pneditor.petrinet.AbstractArc;
@@ -18,6 +17,10 @@ import org.pneditor.petrinet.models.cheucleclaeys.PetriNet;
 import org.pneditor.petrinet.models.cheucleclaeys.Place;
 import org.pneditor.petrinet.models.cheucleclaeys.Transition;
 
+/**
+ * @author Antoine Cheucle
+ *A class to extends the PetriNetInterface model using petriNet functions of our petriNetwork
+ */
 public class PetriNetAdapter extends PetriNetInterface {
 
 	private PetriNet network;
@@ -26,6 +29,10 @@ public class PetriNetAdapter extends PetriNetInterface {
 		this.network = new PetriNet();
 	}
 
+	/**
+	 *Allows us to add a place to our network.
+	 *The place will start with 0 token
+	 */
 	@Override
 	public AbstractPlace addPlace() {
 		PlaceAdapter place = new PlaceAdapter("");
@@ -33,6 +40,9 @@ public class PetriNetAdapter extends PetriNetInterface {
 		return place;
 	}
 
+	/**
+	 *Allows us to add a transition to our network
+	 */
 	@Override
 	public AbstractTransition addTransition() {
 		TransitionAdapter transtion = new TransitionAdapter("");
@@ -40,6 +50,12 @@ public class PetriNetAdapter extends PetriNetInterface {
 		return transtion;
 	}
 
+	/**
+	 * Allows us to add a regular edge.
+	 * The type in or out is defined by the order of the parameters.
+	 * If the first one is a transition, it will be an edgeIn. On the contrary it will be an edgeOut
+	 *@param two AbstractNode
+	 */
 	@Override
 	// IN, OUT
 	public AbstractArc addRegularArc(AbstractNode source, AbstractNode destination) throws UnimplementedCaseException {
@@ -61,8 +77,12 @@ public class PetriNetAdapter extends PetriNetInterface {
 		}
 	}
 
+	/**
+	 * Allows us to add an inhibitory edge (zero) to our model
+	 *@param an AbstractPlace and An AbstractTransition
+	 */
 	@Override
-	// EMPTY
+	// ZERO
 	public AbstractArc addInhibitoryArc(AbstractPlace place, AbstractTransition transition)
 			throws UnimplementedCaseException {
 		try {
@@ -76,8 +96,12 @@ public class PetriNetAdapter extends PetriNetInterface {
 		}
 	}
 
+	/**
+	 * Allows us to add an reset edge (empty) to our model
+	 *@param an AbstractPlace and An AbstractTransition
+	 */
 	@Override
-	// ZERO
+	// EMPTY
 	public AbstractArc addResetArc(AbstractPlace place, AbstractTransition transition)
 			throws UnimplementedCaseException {
 		try {
@@ -91,17 +115,29 @@ public class PetriNetAdapter extends PetriNetInterface {
 		}
 	}
 
+	/**
+	 *Allows us to remove a given place from the network and associated edges
+	 *@param an AbstractPlace
+	 */
 	@Override
 	public void removePlace(AbstractPlace place) {
 		this.network.remove(((PlaceAdapter) place).getModel());
 	}
 
+	/**
+	 *Allows us to remove a given transition from the network and associated edges
+	 *@param an AbstractTransition
+	 */
 	@Override
 	public void removeTransition(AbstractTransition transition) {
 		this.network.remove(((TransitionAdapter) transition).getModel());
 
 	}
 
+	/**
+	 *Allows us to remove a given edge from the network
+	 *@param an AbstractArc
+	 */
 	@Override
 	public void removeArc(AbstractArc arc) {
 		Place place = (arc.getSource() instanceof PlaceAdapter) ? ((PlaceAdapter) arc.getSource()).getModel()
@@ -113,6 +149,10 @@ public class PetriNetAdapter extends PetriNetInterface {
 		network.remove(place, transition, type);
 	}
 
+	/**
+	 *Tells us if the transition is triggerable. It means that all associated edges are ready to be trigger.
+	 *@param an AbstractTransition
+	 */
 	@Override
 	public boolean isEnabled(AbstractTransition transition) throws ResetArcMultiplicityException {
 		Transition transitionModel = ((TransitionAdapter) transition).getModel();
@@ -127,6 +167,10 @@ public class PetriNetAdapter extends PetriNetInterface {
 		return triggerable;
 	}
 
+	/**
+	 *Allows us to trigger a transition and moves tokens between places
+	 *@param an AbstractTransition 
+	 */
 	@Override
 	public void fire(AbstractTransition transition) throws ResetArcMultiplicityException {
 		this.network.triggerTransition(((TransitionAdapter) transition).getModel());
